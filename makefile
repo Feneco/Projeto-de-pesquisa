@@ -7,4 +7,4 @@ pdf: projeto.tex
 	pdflatex -halt-on-error -output-directory ${BUILD_D} $<
 
 clean:
-	rm -f ${BUILD_D}*.aux ${BUILD_D}*.log ${BUILD_D}*.dvi
+	rm -f ${BUILD_D}*.aux ${BUILD_D}*.log ${BUILD_D}*.dvi ${BUILD_D}*.toc ${BUILD_D}*.idx
