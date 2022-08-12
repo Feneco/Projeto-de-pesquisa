@@ -1,22 +1,86 @@
-\documentclass[12pt,openright,twoside,a4paper,brazil]{abntex2}
+\documentclass[article,12pt,openright,twoside,a4paper,brazil]{abntex2}
 \usepackage[T1]{fontenc}		% seleção de códigos de fonte.
 \usepackage[utf8]{inputenc}		% determina a codificação utiizada (conversão automática dos acentos)
 \usepackage{lmodern}			% Usa a fonte Latin Modern			
 \usepackage[brazil]{babel}		% idiomas
 \usepackage{hyperref}  			% controla a formação do índice
-\usepackage{hyphenat}
+\usepackage{hyphenat}           % Regras de hifenação
 \hyphenation{mate-mática recu-perar}
 
+% Suprimir erro de falta de \foreigntigle: https://github.com/abntex/abntex2/issues/218
+\ifthenelse{\equal{\ABNTEXisarticle}{true}}{%
+\renewcommand{\maketitlehookb}{}
+}{}
+
+
+%##############################################################################
 \title{\textbf{Projeto de pesquisa em computação}}
 \author{Wagner Clemente Coelho Batalha \and Gabriel Viana Tomm}
 \date{\today}
+\instituicao{ UNB - Universidade de Brasília }
+\preambulo{Projeto de pesquisa da matéria de MPLIC no semestre 1/2022}
 
+
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={Projeto de pesquisa produzido na matéria MPLIC},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={atigo científico}{unb}{Métodos produção Licenciatura}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+
+% Criar index
+\makeindex
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% Espaçamento simples
+\SingleSpacing
+
+%##############################################################################
 \begin{document}
 
-\maketitle
+% Caso queira, o comando \maketitle imprime apenas o título
+% \maketitle
+% Pode-se usar os comando abaixo pra produzir uma capinha bonitinha
+\imprimircapa
+\imprimirfolhaderosto
 
+% Sumário
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+
+\textual
+
+% Eu estou escrevendo os textos separando cada parte em um arquivo tex própio e
+% depois inserindo neste documento com o \input{} para facilidade de 
+% leitura, escrita do texto e organização em geral. 
 \input{introducao.tex}
 \input{justificativa.tex}
 \input{resenha.tex}
+\input{resenha_artigos.tex}
+
+\postextual
 
 \end{document}
