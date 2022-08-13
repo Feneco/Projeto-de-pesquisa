@@ -1,45 +1,143 @@
-\documentclass[article,12pt,openright,twoside,a4paper,brazil]{abntex2}
-\usepackage[T1]{fontenc}		% seleção de códigos de fonte.
-\usepackage[utf8]{inputenc}		% determina a codificação utiizada (conversão automática dos acentos)
+%% abtex2-modelo-projeto-pesquisa.tex, v<VERSION> laurocesar
+%% Copyright 2012-<COPYRIGHT_YEAR> by abnTeX2 group at http://www.abntex.net.br/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://www.abntex.net.br/
+%%
+%% This work consists of the files abntex2-modelo-projeto-pesquisa.tex
+%% and abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Projeto de pesquisa em conformidade com 
+% ABNT NBR 15287:2011 Informação e documentação - Projeto de pesquisa -
+% Apresentação 
+% ------------------------------------------------------------------------ 
+% ------------------------------------------------------------------------
+
+\documentclass[
+	% -- opções da classe memoir --
+	%article,
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	twoside,			% para impressão em recto e verso. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
 \usepackage{lmodern}			% Usa a fonte Latin Modern
-\usepackage[brazil]{babel}		% idiomas
-\usepackage{hyperref}  			% controla a formação do índice
-\usepackage{hyphenat}           % Regras de hifenação
-\hyphenation{mate-mática recu-perar}
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
 
-% Suprimir erro de falta de \foreigntigle: https://github.com/abntex/abntex2/issues/218
-\ifthenelse{\equal{\ABNTEXisarticle}{true}}{%
-\renewcommand{\maketitlehookb}{}
-}{}
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
 
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
 
-%##############################################################################
-\title{\textbf{Projeto de pesquisa em computação}}
-\author{Wagner Clemente Coelho Batalha \and Gabriel Viana Tomm}
-\date{\today}
-\instituicao{ UNB - Universidade de Brasília }
-\preambulo{Projeto de pesquisa da matéria de MPLIC no semestre 1/2022}
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
 
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
 
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{\textbf{Computação para educação básica de crianças com TDAH}}
+\autor{Wagner Clemente Coelho Batalha \and Gabriel Viana Tomm}
+\local{Brasil}
+\data{\today}
+\instituicao{%
+  Universidade de Brasília - UNB
+  \par
+  Departamento de Ciência da Computação - CIC}
+\tipotrabalho{Projeto de pesquisa}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Projeto de pesquisa sobre educação básica adaptado para crianças com TDAH usando computação.}
+% ---
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
 \makeatletter
 \hypersetup{
      	%pagebackref=true,
-		pdftitle={\@title},
+		pdftitle={\@title}, 
 		pdfauthor={\@author},
-    	pdfsubject={Projeto de pesquisa produzido na matéria MPLIC},
+    	pdfsubject={\imprimirpreambulo},
 	    pdfcreator={LaTeX with abnTeX2},
-		pdfkeywords={atigo científico}{unb}{Métodos produção Licenciatura},
-		colorlinks=true,
-    	linkcolor=blue,
-    	citecolor=blue,
-    	filecolor=magenta,
+		pdfkeywords={tdah}{educacao}{computacao}{projeto de pesquisa}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
 		urlcolor=blue,
 		bookmarksdepth=4
 }
 \makeatother
+% --- 
 
-% Criar index
-\makeindex
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
 
 % O tamanho do parágrafo é dado por:
 \setlength{\parindent}{1.3cm}
@@ -47,30 +145,59 @@
 % Controle do espaçamento entre um parágrafo e outro:
 \setlength{\parskip}{0.2cm}  % tente também \onelineskip
 
-% Espaçamento simples
-\SingleSpacing
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
 
-%##############################################################################
+% ----
+% Início do documento
+% ----
 \begin{document}
 
-% Caso queira, o comando \maketitle imprime apenas o título
-% \maketitle
-% Pode-se usar os comando abaixo pra produzir uma capinha bonitinha
-\imprimircapa
-\imprimirfolhaderosto
-
-% Sumário
-\pdfbookmark[0]{\contentsname}{toc}
-\tableofcontents*
-\cleardoublepage
-
 % Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
 \selectlanguage{brazil}
 
 % Retira espaço extra obsoleto entre as frases.
-\frenchspacing
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% ---
+\imprimirfolhaderosto
+% ---
+
+% ---
+% NOTA DA ABNT NBR 15287:2011, p. 4:
+%  ``Se exigido pela entidade, apresentar os dados curriculares do autor em
+%     folha ou página distinta após a folha de rosto.''
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
 
 
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
 \textual
 
 % Eu estou escrevendo os textos separando cada parte em um arquivo tex própio e
@@ -81,6 +208,63 @@
 \input{resenha.tex}
 \input{resenha_artigos.tex}
 
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
 \postextual
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{abntex2-modelo-references}
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%
+% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%
+%\glossary
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+
+% ---
+% Inicia os apêndices
+% ---
+\begin{apendicesenv}
+
+% Imprime uma página indicando o início dos apêndices
+\partapendices
+
+\lipsum[55-57]
+
+\end{apendicesenv}
+% ---
+
+
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+
+% ---
+% Inicia os anexos
+% ---
+\begin{anexosenv}
+
+% Imprime uma página indicando o início dos anexos
+\partanexos
+
+\end{anexosenv}
+
+%---------------------------------------------------------------------
+% INDICE REMISSIVO
+%---------------------------------------------------------------------
+
+\phantompart
+
+\printindex
+
 
 \end{document}
