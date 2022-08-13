@@ -6,5 +6,6 @@ pdf: projeto.tex
 	fi
 	pdflatex -halt-on-error -output-directory ${BUILD_D} $<
 
+# deve existir alguma forma melhor do que ter que fazer isso
 clean:
-	rm -f ${BUILD_D}*.aux ${BUILD_D}*.log ${BUILD_D}*.dvi ${BUILD_D}*.toc ${BUILD_D}*.idx
+	rm -f ${BUILD_D}*.aux ${BUILD_D}*.log ${BUILD_D}*.dvi ${BUILD_D}*.toc ${BUILD_D}*.idx ${BUILD_D}*.lof ${BUILD_D}*.lot
