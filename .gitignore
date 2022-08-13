@@ -1,2 +1,14 @@
 # pasta com o resultado da compilação LaTeX
 build/*
+# Pdf gerado
+*.pdf
+# Arquivos auxiliares criados com comando latex
+*.aux
+*.idx
+*.log
+*.fls
+*.ilg
+*.ind
+*.synctex.gz
+*.toc
+*.fdb_latexmk
