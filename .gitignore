@@ -1,3 +1,5 @@
+# pasta do vscode
+.vscode/
 # pasta com o resultado da compilação LaTeX
 build/*
 # Pdf gerado
