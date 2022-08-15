@@ -6,8 +6,6 @@ pdf: projeto.tex
 	fi
 	pdflatex -halt-on-error -output-directory ${BUILD_D} $<
 
-bib: citations pdf pdf
-
 citations:
 	bibtex ${BUILD_D}/projeto.aux
 
