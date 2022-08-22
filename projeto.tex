@@ -92,19 +92,40 @@
 		Citado #1 vezes nas páginas #2.%
 	\fi}%
 % ---
+% Macro para nome da universidade
+\newcommand{\unb}{Universidade de Brasília - UNB}
+\newcommand{\cic}{Departamento de Ciência da Computação - CIC}
 
 % ---
 % Informações de dados para CAPA e FOLHA DE ROSTO
 % ---
 \titulo{\textbf{Computação para educação básica de crianças com TDAH}}
 \autor{Wagner Clemente Coelho Batalha \and Gabriel Viana Tomm}
-\local{Brasil}
+\local{Brasil, Brasília, Asa Norte}
 \data{\today}
 \instituicao{%
-  Universidade de Brasília - UNB
+  \unb
   \par
-  Departamento de Ciência da Computação - CIC}
+  \cic}
 \tipotrabalho{Projeto de pesquisa}
+
+\renewcommand{\imprimircapa}{%
+	\begin{capa}%
+		\center
+		\ABNTEXchapterfont\Large \cic \par
+		\vspace*{1cm} 
+		{\ABNTEXchapterfont\large\imprimirautor}
+		\vfill
+		\begin{center}
+		\ABNTEXchapterfont\bfseries\LARGE\imprimirtitulo
+		\end{center}
+		\vfill
+		\large\imprimirlocal \par
+		\large\imprimirdata
+		\vspace*{1cm}
+		\begin{figure}[t!] \center \includegraphics[width=0.75\linewidth]{img/as_comp_PB.jpg} \end{figure}
+	\end{capa}
+}
 % O preambulo deve conter o tipo do trabalho, o objetivo, 
 % o nome da instituição e a área de concentração 
 \preambulo{Projeto de pesquisa voltado para a educação básica no ensino fundamental II adaptado para crianças com TDAH utilizando ferramentas computacionais.}
