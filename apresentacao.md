@@ -1,9 +1,6 @@
 ---
 title: Computação no Ensino Fundamental II para auxílio de estudantes com TDAH
 author: Wagner
-extensions:
-  - terminal
-  - image_ueberzug
 ---
 
 ---
@@ -96,13 +93,6 @@ Analisar como diversas ferramentas computacionais podem auxiliar aprendizado de 
 # Metodologia 
 
 pesquisa bibliográfica e pesquisa experimental
-
----
-# Metodologia 
-
-1. Busca de ferramentas que podem auxiliar no ensino
-1. Análise de elementos das ferramentas
-1. Estudo experimental das ferramentas buscando qualificar hipóteses do passo anterior
 
 ---
 # Um pouco sobre o levantamento bibliográfico
